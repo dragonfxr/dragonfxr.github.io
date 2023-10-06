@@ -5,7 +5,7 @@ layout: post
 # categories: jekyll update
 ---
 
-1.
+1. mailto in anchor tag
 
 `<a href={"mailto:rfeng422@gmail.com"} className='p-text'>rfeng422@gmail.com</a>`
 
