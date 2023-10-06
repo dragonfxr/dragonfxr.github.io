@@ -1,0 +1,18 @@
+---
+layout: post
+# title:  "Welcome to Jekyll!"
+# date:   2023-10-07 03:00:55 +1100
+# categories: jekyll update
+---
+
+1.
+
+`<a href={"mailto:rfeng422@gmail.com"} className='p-text'>rfeng422@gmail.com</a>`
+
+mailto: 是一个 URI（统一资源标识符）方案，它用于创建电子邮件链接。当用户点击一个带有 mailto: 的链接时，它会尝试打开用户的默认邮件客户端，并创建一封新的电子邮件，其中收件人地址已预填为 mailto: 后面的电子邮件地址。 
+
+2.
+
+`import React, { useState } from 'react';`
+
+在 React 库中，useState 是一个具名导出，而 React 是一个默认导出。因此，你需要使用大括号来导入 useState，但不需要为 React 这样做。
