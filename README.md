@@ -1,6 +1,8 @@
 # dragonfxr.github.io
 Russell Personal Blog
 
+follow https://jekyllrb.com/docs/installation/ to install Ruby (RubyGems) and jekyll
+
 install jekyll:
 `gem install jekyll bundler`
 
@@ -9,3 +11,4 @@ run at http://localhost:4000
 
 # Personal portfolio:
 https://russell-feng.netlify.app/
+
