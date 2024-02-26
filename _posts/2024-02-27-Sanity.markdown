@@ -5,6 +5,7 @@ title:  "Sanity"
 # categories: jekyll update
 ---
 
+set-ExecutionPolicy RemoteSigned
 `set-ExecutionPolicy RemoteSigned`
 
 `npm install -g @sanity/cli`
