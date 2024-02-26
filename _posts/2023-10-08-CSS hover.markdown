@@ -1,10 +1,11 @@
 ---
 layout: post
+title:  "CSS Hover"
 ---
 
 **1. box-shadow:**
 
-    **box-shadow:** 这是一个 CSS 属性，用于给元素添加阴影效果。
+    box-shadow: 这是一个 CSS 属性，用于给元素添加阴影效果。
 
 ```css
 &:hover{
