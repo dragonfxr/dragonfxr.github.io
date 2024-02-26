@@ -11,6 +11,6 @@ Run `bundle install` to install missing gems.
 run at http://localhost:4000
 `bundle exec jekyll serve`
 
-# Personal portfolio:
-https://russell-feng.netlify.app/
+# Deployed website:
+
 

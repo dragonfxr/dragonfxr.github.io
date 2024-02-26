@@ -19,7 +19,7 @@
 # in the templates via {{ site.myvariable }}.
 
 title: Russell Feng - Software Developer Blog
-email: rfeng422@gmail.com
+email: russell.feng.au@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   As an experienced and passionate web developer, I bring nearly 2 years of experience in web design, front-end development, and full-stack development in universities and industries. My proficiency lies in developing web applications, designing user interfaces, and writing and testing code in multiple programming languages. I am highly motivated by incorporating client feedback to deliver innovative features that enhance the user experience. With a solid commitment to my craft, I continuously seek opportunities to refine my skills and stay updated with the latest trends in web development.
 baseurl: "" # the subpath of your site, e.g. /blog
