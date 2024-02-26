@@ -6,6 +6,8 @@ follow https://jekyllrb.com/docs/installation/ to install Ruby (RubyGems) and je
 install jekyll:
 `gem install jekyll bundler`
 
+Run `bundle install` to install missing gems.
+
 run at http://localhost:4000
 `bundle exec jekyll serve`
 
