@@ -11,7 +11,7 @@ layout: post
 
 mailto: 是一个 URI（统一资源标识符）方案，它用于创建电子邮件链接。当用户点击一个带有 mailto: 的链接时，它会尝试打开用户的默认邮件客户端，并创建一封新的电子邮件，其中收件人地址已预填为 mailto: 后面的电子邮件地址。 
 
-2.
+2. react引入包是否需要大括号
 
 `import React, { useState } from 'react';`
 
