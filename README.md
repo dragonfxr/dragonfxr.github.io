@@ -11,6 +11,7 @@ Run `bundle install` to install missing gems.
 run at http://localhost:4000
 `bundle exec jekyll serve`
 
-# Deployed website:
+# Deployed website using GitHub Pages:
 
+dragonfxr.github.io/
 
