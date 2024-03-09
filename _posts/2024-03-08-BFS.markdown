@@ -1,0 +1,48 @@
+---
+layout: post
+title:  "BFS"
+---
+
+## Leetcode 733 
+# Problem
+有一幅以 m x n 的二维整数数组表示的图画 image ，其中 image[i][j] 表示该图画的像素值大小。
+
+你也被给予三个整数 sr ,  sc 和 newColor 。你应该从像素 image[sr][sc] 开始对图像进行 上色填充 。
+
+为了完成 上色工作 ，从初始像素开始，记录初始坐标的 上下左右四个方向上 像素值与初始坐标相同的相连像素点，接着再记录这四个方向上符合条件的像素点与他们对应 四个方向上 像素值与初始坐标相同的相连像素点，……，重复该过程。将所有有记录的像素点的颜色值改为 newColor 。
+
+最后返回 经过上色渲染后的图像 。
+
+![image](https://github.com/dragonfxr/Portfolio/assets/112178497/eff11d19-61ab-4fb8-8c8e-87bb5a1ce6fa)
+
+# Notes
+**BFS usually use queues**. There are several ways to do a queue:
+- deque in collections library: `pop()`, `appendleft()`
+- use list: `pop()` , `insert(0,)` 
+- or `append()` to insert,  `list[0]` and `del list[0]` 取出
+
+Steps:
+- add the start point to a list
+- everytime pop out a point from this list
+- do the search based on this poped out point
+- insert the neighbours that are not visited before to the list
+- until the list is empty
+
+## Tricks
+1. In grid/image questions a trick to search up/down/left/right could be creating a:
+
+`directions = {(1, 0), (-1, 0), (0, 1), (0, -1)}`
+
+The iterate over four directions to search:
+
+```python
+for direction in directions:# 新点是(new_i,new_j)
+    new_i = point[0] + direction[0]
+    new_j = point[1] + direction[1]
+```
+
+2. Can try recursion method next time
+
+reference:jimmy00745
+
+https://leetcode.cn/problems/flood-fill/solutions/18729/python3-dfs-yu-bfs-liang-chong-fang-fa-san-chong-s/
