@@ -27,3 +27,7 @@ Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most ou
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
+
+
+IMPORTANT:
+日期在未来（由于时区可能今天也会被算为未来）的post，不会在github pages上显示，本地可以。
