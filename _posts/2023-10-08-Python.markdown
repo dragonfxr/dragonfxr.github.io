@@ -1,0 +1,17 @@
+---
+layout: post
+title:  "Python"
+---
+
+**1. Enumerate**
+
+```python
+x = ('apple', 'banana', 'cherry', 'cherry')
+y = enumerate(x)
+```
+
+Output:
+```
+[(0, 'apple'), (1, 'banana'), (2, 'cherry'), (3, 'cherry')]
+```
+
