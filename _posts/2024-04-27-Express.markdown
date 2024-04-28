@@ -23,7 +23,7 @@ app.post(
 These functions can execute any code, make changes to the request and the response objects, end the request-response cycle, or call the next middleware in the stack.
 
 # 1.1 check() -- express-validator
-```JavaScript
+```javascript
 router.post("/create", check('name').trim().not().isEmpty().withMessage('name is missing'), create);// check it's not empty, if not, send message
 ```
 

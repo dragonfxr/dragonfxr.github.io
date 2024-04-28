@@ -4,7 +4,7 @@ title:  "npm related"
 ---
 
 # 1.
-``` JSON
+```json
 "devDependencies": {
     "nodemon": "^3.1.0"
   }
@@ -12,7 +12,7 @@ title:  "npm related"
 
 
 # 2. bcrypt
-``` Javascript
+```javascript
 const bcrypt = require('bcrypt');
 
 userSchema.pre('save', async function(next){ // before saving to the database, the function will run first
