@@ -1,0 +1,32 @@
+---
+layout: post
+title:  "Express"
+---
+
+# 1. Middleware functions
+Middlewares are functions that have access to the request (req), response (res), and the next middleware function in the application’s request-response cycle:
+```javascript
+app.post(
+    'sign-in',
+    (req, res, next) => {
+        const { email, password } = req.body;
+        if (!email || !password){
+            return res.json({error, "email or password cannot be empty!"});
+        }
+        next();// will not move to the next function unless next() is called.
+    },
+    (req, res) => {
+        res.send("<h1>I have sent something.<h1>")
+    }
+)
+```
+These functions can execute any code, make changes to the request and the response objects, end the request-response cycle, or call the next middleware in the stack.
+
+# 1.1 check() -- express-validator
+```JavaScript
+router.post("/create", check('name').trim().not().isEmpty().withMessage('name is missing'), create);// check it's not empty, if not, send message
+```
+
+The `check('name')` (This function is from express-validator) middleware first trims the name parameter, checks that it's not empty, and if it fails this check, it generates an error with the message "name is missing".
+
+`create`: This is the function that will be executed if the validation passes.

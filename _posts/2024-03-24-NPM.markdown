@@ -1,12 +1,25 @@
 ---
 layout: post
-title:  "npm"
+title:  "npm related"
 ---
 
+# 1.
 ``` JSON
 "devDependencies": {
     "nodemon": "^3.1.0"
   }
 ```
 
-# 2. Mongoose
+
+# 2. bcrypt
+``` Javascript
+const bcrypt = require('bcrypt');
+
+userSchema.pre('save', async function(next){ // before saving to the database, the function will run first
+    if(this.isModified('password')){
+        const hash = await bcrypt.hash(this.password, 10);
+        this.password = hash
+    }
+    next();
+})
+```

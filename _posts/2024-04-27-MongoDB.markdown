@@ -1,0 +1,14 @@
+---
+layout: post
+title:  "MongoDB"
+---
+
+# 1. Mongoose
+## 1.1 Introduction
+
+## 1.2 findOne:
+```javaScript
+const oldUser = await User.findOne({ email });//Mongoose
+
+if (oldUser) return res.status(401).json({error: 'This email address is already in use!'});
+```
