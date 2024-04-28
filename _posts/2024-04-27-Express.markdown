@@ -30,3 +30,55 @@ router.post("/create", check('name').trim().not().isEmpty().withMessage('name is
 The `check('name')` (This function is from express-validator) middleware first trims the name parameter, checks that it's not empty, and if it fails this check, it generates an error with the message "name is missing".
 
 `create`: This is the function that will be executed if the validation passes.
+
+**A Full code to refer:**
+```javascript
+exports.userValidator = [
+    check('name').trim().not().isEmpty().withMessage('Name is missing.'),
+    check('email').normalizeEmail().isEmail().withMessage('Email is invalid.'),
+    check('password').trim().not().isEmpty().withMessage('Password is missing.').isLength({ min:6, max:20}).withMessage(
+        'Password must be 6-20 characters long.'
+    ),
+];
+```
+
+# 1.2 validationResult
+```javascript
+exports.validate = (req, res, next) => {
+    const error = validationResult(req).array();
+    console.log(error)
+
+    next();
+}
+```
+this error will be like this if we console log it:
+```json
+[
+  {
+    type: 'field',
+    value: '@  ',
+    msg: 'Email is invalid.',
+    path: 'email',
+    location: 'body'
+  },
+  {
+    type: 'field',
+    value: '111111',
+    msg: 'Password must be 8-20 characters long.',
+    path: 'password',
+    location: 'body'
+  }
+]
+```
+where msg is the error message that has been sent(i.e. withMessage() in Section 1.2)
+
+What we can do next is:
+```javascript
+exports.validate = (req, res, next) => {
+    const error = validationResult(req).array();
+    if (error.length) {
+        return res.json({error: error[0].msg})
+    }
+    next();
+}
+```
