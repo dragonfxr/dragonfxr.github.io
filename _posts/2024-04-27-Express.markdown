@@ -82,3 +82,7 @@ exports.validate = (req, res, next) => {
     next();
 }
 ```
+How to use these in router:
+```javascript
+router.post("/create", userValidator, validate, create);
+```

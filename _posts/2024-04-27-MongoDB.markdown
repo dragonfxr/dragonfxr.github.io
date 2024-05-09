@@ -7,8 +7,73 @@ title:  "MongoDB"
 ## 1.1 Introduction
 
 ## 1.2 findOne:
+A Mongoose model method that retrieves the first document matching a specified query.
 ```javascript
 const oldUser = await User.findOne({ email });//Mongoose
-
 if (oldUser) return res.status(401).json({error: 'This email address is already in use!'});
 ```
+User 在这里是一个schema（model）
+
+## 1.3 findById
+从数据库里找拥有这个id的object
+```javascript
+const user = await User.findById(userId);
+// if there's no user having this id.
+if (!user) return res.json({ error: 'user not found!'});
+```
+
+## 1.4 isValidObjectId
+This is a utility function in Mongoose (mongoose.Types.ObjectId.isValid) and checks whether a string is a valid MongoDB ObjectId.
+```javascript
+exports.verifyEmail = async (req, res) => {
+  const {userId, OTP} = req.body;
+  // if it's not a valid user id
+  if (!isValidObjectId(userId)){
+    return res.json({ error: 'invalid user!' });
+  };
+  ...
+}
+```
+
+# 2. Schema
+```javascript
+const emailVerificationTokenSchema = mongoose.Schema({
+  owner: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User",// model called User
+    required: true,
+  },
+  token: {
+    type: String,
+    required: true,
+  },
+  createAt: {
+    type: Date,
+    expires: 3600,//  3600s
+    default: Date.now(),
+  },
+
+});
+```
+## 2.1 Schema Definition
+- expires
+```javascript
+createAt: {
+    type: Date,
+    expires: 3600,//  3600s
+    default: Date.now(),
+  },
+```
+Determines the lifetime of a document in seconds. Once this time has passed since the createAt field's value, MongoDB will automatically delete the document.
+
+- ref, type
+```javascript
+owner: {
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "User",// model called User
+    required: true,
+  },
+```
+The ref property tells Mongoose that a field in a schema is a reference to a document from another collection. In the example, the owner field refers to a document in the "User" collection. This means the owner field stores an ObjectId that points to a specific "User" document.
+
+type: `mongoose.Schema.Types.ObjectId` defines the owner field as an ObjectId, which will hold a reference to another MongoDB document.
