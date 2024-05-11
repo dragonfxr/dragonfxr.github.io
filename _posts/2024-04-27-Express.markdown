@@ -41,13 +41,13 @@ exports.userValidator = [
     ),
 ];
 ```
+no need to `next()`, because already handled the error.
 
 # 1.2 validationResult
 ```javascript
 exports.validate = (req, res, next) => {
     const error = validationResult(req).array();
-    console.log(error)
-
+    console.log(error);
     next();
 }
 ```
@@ -86,3 +86,15 @@ How to use these in router:
 ```javascript
 router.post("/create", userValidator, validate, create);
 ```
+
+# 1.3 Middleware Pattern (req and res)
+在 Express.js 中，请求对象 `req` 和响应对象 `res` 会在路由和中间件之间传递。这允许你在一个中间件中对 `req` 和 `res` 进行操作或修改，并在链中的后续中间件或路由处理函数中访问这些修改或添加的属性。
+
+```javascript
+router.post("/verify-pass-reset-token", isValidPassResetToken, (req, res) => {
+    res.json({valid: true});
+});
+```
+- `isValidPassResetToken` 是一个中间件函数，它首先被调用来处理传入的 POST 请求。
+- 在这个中间件函数中，可以对 `req` 进行操作，比如**添加属性**或验证请求等。
+- 一旦 `isValidPassResetToken` 中间件通过调用 `next()` 结束其执行（假设没有错误或没有发送响应终止请求处理），控制权就会传递到路由的下一个处理函数，也就是你的箭头函数 `(req, res) => { res.json({valid: true}); }`。

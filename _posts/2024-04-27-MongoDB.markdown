@@ -77,3 +77,18 @@ owner: {
 The ref property tells Mongoose that a field in a schema is a reference to a document from another collection. In the example, the owner field refers to a document in the "User" collection. This means the owner field stores an ObjectId that points to a specific "User" document.
 
 type: `mongoose.Schema.Types.ObjectId` defines the owner field as an ObjectId, which will hold a reference to another MongoDB document.
+
+# 2.2 Schema Methods
+```javascript
+emailVerificationTokenSchema.methods.compareToken = async function(token) {
+  const result = await bcrypt.compare(token, this.token);
+  return result;
+}
+explain this one especially methods and bcrypt.compare
+```
+`.methods` 指定了一个方法，defines a method called `compareToken` on the schema named `emailVerificationTokenSchema`.
+
+Every instance of a document created from `emailVerificationTokenSchema` will have access to this method.
+
+- **this.token: 这个schema的里的一个属性token**
+- `bcrpt.compare()`:将明文值与哈希值进行比较, 第一个argument是明文，第二个是hashed value。

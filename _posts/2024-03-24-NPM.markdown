@@ -3,7 +3,7 @@ layout: post
 title:  "npm related"
 ---
 
-# 1.
+# 1.devDependencies
 ```json
 "devDependencies": {
     "nodemon": "^3.1.0"
@@ -23,3 +23,11 @@ userSchema.pre('save', async function(next){ // before saving to the database, t
     next();
 })
 ```
+
+```javascript
+emailVerificationTokenSchema.methods.compareToken = async function(token) {
+  const result = await bcrypt.compare(token, this.token);//this.token 这个schema的里的一个属性token
+  return result;
+}
+```
+- `bcrpt.compare()`:将明文值与哈希值进行比较, 第一个argument是明文，第二个是hashed value。
