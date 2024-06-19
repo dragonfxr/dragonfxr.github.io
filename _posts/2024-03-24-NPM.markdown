@@ -31,3 +31,26 @@ emailVerificationTokenSchema.methods.compareToken = async function(token) {
 }
 ```
 - `bcrpt.compare()`:将明文值与哈希值进行比较, 第一个argument是明文，第二个是hashed value。
+
+
+# 3.jsonwebtoken
+在 RESTful API 中，JWT 是一种常见的认证和授权方式。JWT 常用于身份验证。在用户登录成功后，服务器生成一个 JWT 并返回给客户端。客户端在后续的请求中会携带这个 JWT，以此来证明自己的身份。服务器验证这个 JWT，确认请求者的身份。
+
+（也就是不需要每次都验证用户名密码）
+
+## Usage:
+`jwt.sign(payload, secretOrPrivateKey, [options, callback])`
+
+https://jwt.io/
+
+# 4. morgan
+
+# 5. dotenv
+`dotenv` 库提供了简便的方式来加载 `.env` 文件(否则需要脚本什么的)
+
+直接这样使用：
+```javascript
+require('dotenv').config();
+
+process.env.JWT_SECRET;
+```
