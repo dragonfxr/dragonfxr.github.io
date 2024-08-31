@@ -1,0 +1,69 @@
+---
+layout: post
+title:  "React"
+---
+
+# 1. react-router-dom:
+## 1.1
+react-router-dom 提供了基于浏览器的客户端路由，这意味着页面导航不需要重新加载整个页面，从而提高了用户体验和性能。
+
+比如`<a>`就会在点击的时候重新加载，而`<Link></Link>`就不会重新加载
+
+# 2.useRef:
+**例如表单中的自动聚焦、选择文本或滚动到特定位置等很有用。**
+## 2.1 创建useRef引用：
+```javascript
+const inputRef = useRef();
+```
+`useRef()` 返回一个可以附加到 DOM 元素上的引用对象，该对象在整个组件的生命周期中保持不变。
+`inputRef.current` 将指向被 `ref={inputRef}` 赋值的 DOM 元素。
+
+## 2.2 将引用附加到输入框：
+```javascript
+ref={activeOtpIndex === index ? inputRef : null}
+```
+条件地将 `inputRef` 赋值给当前活动的输入框。当 `activeOtpIndex` 等于当前索引 `index` 时，该输入框将接收 `inputRef`。
+
+## 2.3自动聚焦
+```javascript
+useEffect(() => {
+  inputRef.current?.focus();
+}, [activeOtpIndex]);
+```
+
+当 `activeOtpIndex` 变化时，`useEffect` 钩子会执行。
+`inputRef.current?.focus()` 使当前活动的输入框自动获得焦点。
+
+**`focus()` 方法用于将输入焦点设置到指定的元素上。调用这个方法会使得该元素成为当前活动元素，并接收用户输入的后续操作，例如键盘输入。**
+
+# 3.useContext:
+在 React 中，`createContext` 和 `useContext` 是用于管理状态并在组件树中共享状态的钩子函数，不需要在每个层级手动传递 props。
+
+**createContext**
+`createContext` 是一个用于创建上下文对象的函数。上下文提供了一种在组件树中共享数据（如状态）的方法，而无需在每个层级显式传递 props。
+
+语法： `const MyContext = createContext(defaultValue);`
+用途： 它创建了一个上下文对象，这个对象有两个主要的组件：
+Provider（提供者）： 一个 React 组件，允许消费者组件订阅上下文的变化。
+Consumer（消费者）： 一个 React 组件，订阅上下文的变化（不过在使用 hooks 时，我们通常使用 useContext）。
+
+**useContext**
+`useContext` 是一个钩子函数，允许你直接访问上下文的值。它订阅上下文，并在上下文值发生变化时触发重新渲染。
+
+语法： `const value = useContext(MyContext);`
+用途： 它返回给定上下文的当前值。这个值由树中更高层的最近的 Provider 组件确定。
+使用 useContext 时，你不需要消费者组件，而是直接使用钩子来获取上下文的值。这样使代码更加简洁和清晰。
+
+## 3.1 Provider
+Provider 是 React 中由 createContext 创建的上下文对象的一部分。Provider 是一个 React 组件，它允许你将一个值传递给整个组件树中的任何组件，这些组件都可以使用这个值，而不需要通过每一层显式地传递 props。
+
+Provider 的作用
+Provider 组件是上下文的提供者，它接收一个 value 属性，这个属性是你想要传递给其所有子组件的值。所有使用这个上下文的组件都可以访问这个值，无论它们在组件树中的深度如何。
+
+```javascript
+<ThemeContext.Provider value={{theme: 'just for testing'}}>
+  {children}
+</ThemeContext.Provider>
+```
+
+这里的 `ThemeContext.Provider` 组件有一个 value 属性，其值是一个对象 `{theme: 'just for testing'}`。Provider 组件的 value 属性决定了它的所有子组件（不论深浅）能够访问到的上下文值。在这个例子中，所有在 `ThemeProvider` 组件内部的子组件都能通过 `ThemeContext` 获取到 `{theme: 'just for testing'}` 这个值。
